@@ -23,7 +23,7 @@ pipeline {
         
         stage ('NodeJsScan Analysis') {
             steps {
-                sh 'nodejsscan --directory `pwd` --output /var/lib/jenkins/reports/nodejsscan-report'
+                sh 'nodejsscan --directory `pwd` --output /var/jenkins_home/workspace/node-app-pipeline/reports/nodejsscan-report'
             }
         }
         
