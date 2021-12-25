@@ -17,7 +17,7 @@ pipeline {
         
         stage ('NPM Audit Analysis') {
             steps {
-                sh '/tmp/npm-audit.sh'
+                sh '/var/tmp/npm-audit.sh'
             }
         }
         
