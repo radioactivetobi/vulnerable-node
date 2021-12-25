@@ -35,19 +35,7 @@ pipeline {
         
         stage ('Dependency-Check Analysis') {
             steps {
-                sh '/var/lib/jenkins/dependency-check/bin/dependency-check.sh --scan `pwd` --format JSON --out /var/jenkins_home/workspace/node-app-pipeline/reports/dependency-check-report --prettyPrint'
-            }
-        }
-        
-        stage ('Audit.js Analysis') {
-            steps {
-                sh '/home/chaos/auditjs.sh'
-            }
-        }
-              
-        stage ('Snyk Analysis') {
-            steps {
-                sh '/home/chaos/snyk.sh'
+                sh '/var/tmp/dependency-check/bin/dependency-check.sh --scan `pwd` --format JSON --out /var/jenkins_home/workspace/node-app-pipeline/reports/dependency-check-report --prettyPrint'
             }
         }
                 
