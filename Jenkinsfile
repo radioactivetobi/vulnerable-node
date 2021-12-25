@@ -29,13 +29,13 @@ pipeline {
         
         stage ('Retire.js Analysis') {
             steps {
-                sh 'retire --path `pwd` --outputformat json --outputpath /var/lib/jenkins/reports/retirejs-report --exitwith 0'
+                sh 'retire --path `pwd` --outputformat json --outputpath /var/jenkins_home/workspace/node-app-pipeline/reports/retirejs-report --exitwith 0'
             }
         }
         
         stage ('Dependency-Check Analysis') {
             steps {
-                sh '/var/lib/jenkins/dependency-check/bin/dependency-check.sh --scan `pwd` --format JSON --out /var/lib/jenkins/reports/dependency-check-report --prettyPrint'
+                sh '/var/lib/jenkins/dependency-check/bin/dependency-check.sh --scan `pwd` --format JSON --out /var/jenkins_home/workspace/node-app-pipeline/reports/dependency-check-report --prettyPrint'
             }
         }
         
