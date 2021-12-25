@@ -15,18 +15,6 @@ pipeline {
             }
         }
         
-        stage ('SonarQube Analysis') {
-            environment {
-                scannerHome = tool 'SonarQube Scanner'
-            }
-            steps {
-                withSonarQubeEnv ('SonarQube') {
-                    sh '${scannerHome}/bin/sonar-scanner'
-                    sh 'cat .scannerwork/report-task.txt > /var/lib/jenkins/reports/sonarqube-report'
-                }
-            }    
-        }
-        
         stage ('NPM Audit Analysis') {
             steps {
                 sh '/home/chaos/npm-audit.sh'
