@@ -23,19 +23,19 @@ pipeline {
         
         stage ('NodeJsScan Analysis') {
             steps {
-                sh 'nodejsscan --directory `pwd` --output /var/jenkins_home/workspace/node-app-pipeline/reports/nodejsscan-report'
+                sh 'nodejsscan --directory `pwd` --output /var/jenkins_home/workspace/overboard-app/reports/nodejsscan-report'
             }
         }
         
         stage ('Retire.js Analysis') {
             steps {
-                sh 'retire --path `pwd` --outputformat json --outputpath /var/jenkins_home/workspace/node-app-pipeline/reports/retirejs-report --exitwith 0'
+                sh 'retire --path `pwd` --outputformat json --outputpath /var/jenkins_home/workspace/overboard-app/reports/retirejs-report --exitwith 0'
             }
         }
         
         stage ('Dependency-Check Analysis') {
             steps {
-                sh '/var/tmp/dependency-check/bin/dependency-check.sh --scan `pwd` --format JSON --out /var/jenkins_home/workspace/node-app-pipeline/reports/dependency-check-report --prettyPrint'
+                sh '/var/tmp/dependency-check/bin/dependency-check.sh --scan `pwd` --format JSON --out /var/jenkins_home/workspace/overboard-app/reports/dependency-check-report --prettyPrint'
             }
         }
                 
