@@ -35,7 +35,7 @@ pipeline {
         
         stage ('Dependency-Check - OWASP') {
             steps {
-                sh '/var/tmp/dependency-check/bin/dependency-check.sh --scan `pwd` --format JSON --out /var/jenkins_home/workspace/overboard-app/reports/dependency-check-report --prettyPrint'
+                sh '/var/jenkins_home/dependency-check/bin --scan `pwd` --format JSON --out /var/jenkins_home/workspace/overboard-app/reports/dependency-check-report --prettyPrint'
             }
         }
                 
