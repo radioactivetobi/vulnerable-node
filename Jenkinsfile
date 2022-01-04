@@ -15,25 +15,25 @@ pipeline {
             }
         }
         
-        stage ('NPM Audit Analysis') {
+        stage ('Secrets Scan') {
             steps {
-                sh '/var/tmp/npm-audit.sh'
+                sh 'gitleaks --repo-url=https://github.com/gitleakstest/gronit -v --report=/var/jenkins_home/workspace/overboard-app/reports/gitleaks_results.csv'
             }
         }
         
-        stage ('NodeJsScan Analysis') {
+        stage ('SAST - NodeJsScan') {
             steps {
                 sh 'nodejsscan --directory `pwd` --output /var/jenkins_home/workspace/overboard-app/reports/nodejsscan-report'
             }
         }
         
-        stage ('Retire.js Analysis') {
+        stage ('Software Composition Analysis - Retire.js') {
             steps {
                 sh 'retire --path `pwd` --outputformat json --outputpath /var/jenkins_home/workspace/overboard-app/reports/retirejs-report --exitwith 0'
             }
         }
         
-        stage ('Dependency-Check Analysis') {
+        stage ('Dependency-Check - OWASP') {
             steps {
                 sh '/var/tmp/dependency-check/bin/dependency-check.sh --scan `pwd` --format JSON --out /var/jenkins_home/workspace/overboard-app/reports/dependency-check-report --prettyPrint'
             }
