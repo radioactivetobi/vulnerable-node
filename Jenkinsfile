@@ -17,7 +17,7 @@ pipeline {
         
         stage ('Secrets Scan') {
             steps {
-                sh 'gitleaks detect --source=/var/jenkins_home/gronit --verbose --report-path=/var/jenkins_home/workspace/overboard-app/reports/gitleaks_results.csv'
+                sh 'gitleaks detect --source=/var/jenkins_home/workspace/overboard-app --verbose --report-path=/var/jenkins_home/workspace/overboard-app/reports/gitleaks_results.csv'
             }
         }
         
